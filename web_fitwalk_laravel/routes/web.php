@@ -107,8 +107,8 @@ Route::get('/cart', function () {
     ]);
 });
 
-Route::get('/navia', function () {
-    return view('navia', [
+Route::get('/wishlist', function () {
+    return view('wishlist', [
         'title' => 'ilovenavia',
         'name' => 'welt yang',
         'email' => 'antoluishendry@gmail.com',
@@ -116,8 +116,26 @@ Route::get('/navia', function () {
     ]);
 });
 
-Route::get('/wishes', function () {
-    return view('wishes', [
+Route::get('/setting', function () {
+    return view('setting', [
+        'title' => 'wishes',
+        'name' => 'welt yang',
+        'email' => 'antoluishendry@gmail.com',
+        'image' => 'img/jojo.jpg'
+    ]);
+});
+
+Route::get('/profile', function () {
+    return view('profile', [
+        'title' => 'wishes',
+        'name' => 'welt yang',
+        'email' => 'antoluishendry@gmail.com',
+        'image' => 'img/jojo.jpg'
+    ]);
+});
+
+Route::get('/notification', function () {
+    return view('notification', [
         'title' => 'wishes',
         'name' => 'welt yang',
         'email' => 'antoluishendry@gmail.com',
