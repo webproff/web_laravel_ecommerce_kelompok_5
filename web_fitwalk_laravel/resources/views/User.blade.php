@@ -1,7 +1,7 @@
 @extends('layoud.main')
 
 @section('container')
-	<h1 class="mb-5">poster category: {{ $category }}</h1>
+	<h1 class="mb-5">poster user: {{ $User }}</h1>
     @foreach ($poster as $post)
         <article class="mb-5">
             <h2>

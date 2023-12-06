@@ -2,6 +2,7 @@
 
 use App\Models\poster;
 use App\Models\category;
+use App\Models\User;
 use App\Http\Controllers\postController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,13 @@ route::get('category/{category:slug}', function(category $category) {
     ]);
 });
 
+route::get('User/{User:username}', function(User $User) {
+    return view('User', [
+        'title' => 'user post',
+        'poster' => $User->poster,
+        'User' => $User->name,
+    ]);
+});
 
 
 

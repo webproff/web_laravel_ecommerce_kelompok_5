@@ -17,7 +17,12 @@ class posterFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'title' => 
+            'title' => $this->faker->sentence(mt_rand(2,8)), 
+            'slug' => $this->faker->slug(), 
+            'ras' => $this->faker->paragraph(mt_rand(1,2)), 
+            'gender' => $this->faker->sentence(mt_rand(10,14)), 
+            'user_id' => mt_rand(1,10),
+            'category_id' => mt_rand(1,2),
             
         ];
     }
