@@ -21,13 +21,13 @@ class DatabaseSeeder extends Seeder
             
         // ]);
         category::create([
-            'name' => 'straight',
-            'slug' => 'straight',
+            'name' => 'sneaker',
+            'slug' => 'sneaker',
         ]);
 
         category::create([
-            'name' => 'gay',
-            'slug' => 'gay',
+            'name' => 'shoes',
+            'slug' => 'shoes',
         ]);
         
         poster::factory(20)->create();

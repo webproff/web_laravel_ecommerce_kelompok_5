@@ -10,6 +10,7 @@ class poster extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['category', 'user'];
 
     public function category()
     {

@@ -11,7 +11,7 @@ class postController extends Controller
     {
         return view('archon', [
             'title' => 'archon',
-            'archon' => poster::all()
+            'archon' => poster::latest()->get(),
         ]);
     }
     
