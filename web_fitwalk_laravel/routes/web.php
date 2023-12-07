@@ -1,10 +1,13 @@
 <?php
 
+use App\Models\User;
 use App\Models\poster;
 use App\Models\category;
-use App\Models\User;
-use App\Http\Controllers\postController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\postController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\registerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +59,8 @@ route::get('User/{User:username}', function(User $User) {
     ]);
 });
 
-
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [registerController::class, 'index']);
 
 
 
