@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // User::create([
             
         // ]);
+        
         category::create([
             'name' => 'sneaker',
             'slug' => 'sneaker',
@@ -29,6 +30,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'shoes',
             'slug' => 'shoes',
         ]);
+
+        // category::factory(10)->create();
+
         
         poster::factory(20)->create();
     }

@@ -17,12 +17,12 @@
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <small>
                     <p>
-                        <h5>Rp.500.000</h5>
+                        <h5>Rp.{{ $post->price }}</h5>
                         Category: {{ $post->category->name }}
                         <br>
-                        Seller:   {{ $post->User->name }}
+                        Seller:   {{ $post->toko }}
                         <br>
-                        rating: 5.0 | sold: 500
+                        rating: {{ $post->rating }} | sold: {{ $post->sold }}
                     </p>        
                     </small>
                     </div>

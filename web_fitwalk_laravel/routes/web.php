@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,11 @@ use App\Http\Controllers\registerController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('home');
-});
+// Route::get('/', function () {
+//     return redirect('home');
+// });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home', [
         'title' => 'home',
         'name' => 'welt yang',
@@ -59,9 +60,14 @@ route::get('User/{User:username}', function(User $User) {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [registerController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/register', [registerController::class, 'index'])->middleware('guest');
+Route::post('/register', [registerController::class, 'store']);
+
+Route::get('/dashboard', [dashboardController::class, 'index'])->middleware('auth');
 
 
 

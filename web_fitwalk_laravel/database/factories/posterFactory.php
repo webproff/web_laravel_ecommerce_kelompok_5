@@ -17,10 +17,13 @@ class posterFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(mt_rand(2,8)), 
+            'title' => $this->faker->words(3, true), 
             'slug' => $this->faker->slug(), 
-            'ras' => $this->faker->paragraph(mt_rand(1,2)), 
-            'gender' => $this->faker->sentence(mt_rand(10,14)), 
+            'rating' => $this->faker->numberBetween(3, 5), 
+            'sold' => $this->faker->numberBetween(1, 100), 
+            'price' => $this->faker->randomFloat(3, 200000, 5000000), 
+            'toko' => $this->faker->words(2, true), 
+            'description' => $this->faker->paragraph(), 
             'user_id' => mt_rand(1,10),
             'category_id' => mt_rand(1,2),
             

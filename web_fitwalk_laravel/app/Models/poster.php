@@ -16,8 +16,8 @@ class poster extends Model
     {
         
         $query->when($filters['search'] ?? false, function($query, $search){
-            return $query->where('title', 'like', '%' . $search . '%')
-                        ->orWhere('ras', 'like', '%' . $search . '%');
+            return $query->where('title', 'like', '%' . $search . '%');
+                        // ->orWhere('', 'like', '%' . $search . '%');
         });
     }
 

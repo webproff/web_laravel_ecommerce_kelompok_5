@@ -17,8 +17,11 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('ras');
-            $table->text('gender');
+            $table->integer('rating');
+            $table->integer('sold');
+            $table->integer('price');
+            $table->string('toko');
+            $table->string('description');
             $table->timestamp('publish_at')->nullable();
             $table->timestamps();
         });
