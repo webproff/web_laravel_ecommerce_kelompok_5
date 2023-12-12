@@ -20,7 +20,20 @@
         {!! $post->gender !!}
     </article>
     <a class="btn btn-primary" href="#" role="button">wishlist</a>
-    <a class="btn btn-primary" href="#" role="button">cart</a>
+
+    <form action="{{ route('cart.add') }}" method="post">
+        @csrf
+    
+        <input type="hidden" name="poster_id" value="{{ $post->id }}">
+    
+        {{-- <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" value="1">
+        </div> --}}
+    
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
+    
     <br>
     <a href="/archon">balik aja</a>
 @endsection

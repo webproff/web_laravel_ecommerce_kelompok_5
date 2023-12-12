@@ -9,6 +9,7 @@ use App\Http\Controllers\postController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\cartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +70,7 @@ Route::post('/register', [registerController::class, 'store']);
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware('auth');
 
-
+Route::post('/cart/add', 'CartController@add')->name('cart.add');
 
 
 
