@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\cart;
+use App\Models\poster;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -13,27 +14,32 @@ class cartController extends Controller
 {
     public function add(Request $request)
     {
-        $posterId = $request->input('poster_id');
+        $poster_Id = $request->input('poster_id');
+        $quantity = $request->input('quantity');
 
-        $cartItem = CartItem::where('poster_id', $posterId)->first();
+        $poster = poster::find($posterId);
 
-        if ($cartItem) {
-            $cartItem->quantity++;
-            $cartItem->save();
-        } else {
-            $cartItem = new CartItem();
-            $cartItem->poster_id = $posterId;
-            $cartItem->name = $poster->name;
-            $cartItem->price = $poster->price;
-            $cartItem->quantity = 1;
-            $cartItem->save();
+        if (!$poster) {
+            return response()->json([
+                'success' => false,
+                'message' => 'poster not found',
+            ]);
         }
 
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
+        $cartItem = CartItem::create([
+            'poster_id' => $posterId,
+            'title' => $poster->title,
+            'price' => $poster->price,
+            'quantity' => $quantity,
+        ]);
 
-        return redirect()->route('cart.index');
+        $cart = Auth::user()->cart;
+        $cart->items()->attach($cartItem);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Item added to cart successfully',
+        ]);
     }
 
 }

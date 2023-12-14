@@ -70,7 +70,12 @@ Route::post('/register', [registerController::class, 'store']);
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware('auth');
 
-Route::post('/cart/add', 'CartController@add')->name('cart.add');
+Route::get('cart/', [postController::class, 'cart'])->name('cart')->middleware('auth');
+Route::get('add-to-cart/{id}', [postController::class, 'addToCart'])->name('add_to_cart')->middleware('auth');
+Route::patch('update-cart', [postController::class, 'update'])->name('update_cart');
+Route::delete('remove-from-cart/{id}', [postController::class, 'remove'])->name('remove_from_cart');
+
+Route::post('/cart/add', [cartController::class, 'add'])->middleware('auth');
 
 
 

@@ -2,10 +2,21 @@
 
 @section('container')
 
+    <div class="container mt-5">
+    
+        @if(session('success'))
+            <div class="alert alert-success">
+            {{ session('success') }}
+            </div> 
+        @endif
+    
+    </div>
+
     <div class="mt-5"><form action="/archon" class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" name="search" value="{{ request('search') }}">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form></div>
+    
     @if ($archon->count())
     <div class="container">
         <div class="row">
@@ -23,6 +34,8 @@
                         Seller:   {{ $post->toko }}
                         <br>
                         rating: {{ $post->rating }} | sold: {{ $post->sold }}
+                        <br>
+                        <p class="btn-holder"><a href="{{ route('add_to_cart', $post->id) }}" class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
                     </p>        
                     </small>
                     </div>
@@ -35,7 +48,8 @@
     @else    
     <p class="text-center fs-4">No product.</p>
     @endif
-
+    
+    
 
 
 
