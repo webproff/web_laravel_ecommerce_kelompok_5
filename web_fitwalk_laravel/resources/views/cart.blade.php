@@ -39,12 +39,6 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">Rp{{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="" >
-                        {{-- <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i> Delete</button> --}}
-                        {{-- <a method="DELETE" href="{{ route('remove_from_cart', $details) }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> delete</a> --}}
-                        {{-- <form action="{{ route('remove_from_cart', $details ) }}" method="delete">
-                            @csrf
-                            <button type="submit">Remove item</button>
-                        </form> --}}
 
                         <form action="{{ route('remove_from_cart', $id) }}" method="POST">
                             @csrf
@@ -68,7 +62,7 @@
         </tr>
     </tfoot>
 </table>
-
+ 
 {{-- @section('scripts')
 <script type="text/javascript">
    

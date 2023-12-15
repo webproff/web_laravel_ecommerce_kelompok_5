@@ -1,7 +1,9 @@
 @extends('layoud.main')
 
 @section('container')
-    <article class="col-md-4 mb-5 mt-5">
+    <div class="mx-auto d-flex justify-content-center" >
+
+    <article class="col-md-4 mb-5 mt-5 " >
         <img src="https://source.unsplash.com/500x400/?shoe" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
@@ -18,8 +20,12 @@
                     </div>
         <h6>Description: {{ $post->description }}</h6>
         {!! $post->gender !!}
+        <p class="btn-holder"><a href="{{ route('add_to_cart', $post->id) }}" class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
+                        
+        <p class="btn-holder"><a href="{{ route('add_to_Wish', $post->id) }}" class="btn btn-primary btn-block text-center" role="button">Add to wishlist</a> </p>
+
+        <a href="/archon">Back</a>
     </article>
-    <a class="btn btn-primary" href="#" role="button">wishlist</a>
 
     {{-- <form action="{{ route('cart.add') }}" method="post">
         @csrf
@@ -34,6 +40,5 @@
         {{-- <button type="submit" class="btn btn-primary">Add to Cart</button>
         </form> --}}
     
-    <br>
-    <a href="/archon">balik aja</a>
+    </div>
 @endsection

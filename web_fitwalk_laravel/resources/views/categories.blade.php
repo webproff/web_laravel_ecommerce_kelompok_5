@@ -1,7 +1,7 @@
 @extends('layoud.main')
 
 @section('container')
-	<h1 class="mb-5">poster categories</h1>
+	<h1 class="mb-5">Categories : </h1>
     @foreach ($categories as $category)
         <article class="mb-5">
         <ul>

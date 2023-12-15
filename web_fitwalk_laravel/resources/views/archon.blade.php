@@ -12,7 +12,7 @@
     
     </div>
 
-    <div class="mt-5"><form action="/archon" class="d-flex" role="search">
+    <div class="mt-5 mx-auto " style="width: 50rem; "><form action="/archon" class="d-flex justify-content-center" role="search" >
         <input class="form-control me-2" type="search" placeholder="Search" name="search" value="{{ request('search') }}">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form></div>

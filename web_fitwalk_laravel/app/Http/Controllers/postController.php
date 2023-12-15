@@ -14,6 +14,15 @@ class postController extends Controller
             'archon' => poster::latest()->filter(request(['search']))->get(),
         ]);
     }
+
+    // untuk home
+    public function indexs()
+    {
+        return view('home', [
+            'title' => 'Home',
+            'product' => poster::latest()->filter(request(['search']))->get(),
+        ]);
+    }
     
     public function show(poster $poster)
     {
@@ -48,7 +57,55 @@ class postController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product add to cart successfully!');
     }
+
+    public function wishlist()
+    {
+        return view('wishlist');
+    }
+
+    public function addToWish($id)
+    {
+        $poster = Poster::findOrFail($id);
  
+        $wishlist = session()->get('wishlist', []);
+ 
+        if(isset($wishlist[$id])) {
+            $wishlist[$id]['quantity']++;
+        }  else {
+            $wishlist[$id] = [
+                "title" => $poster->title,
+                "rating" => $poster->rating,
+                "price" => $poster->price,
+            ];
+        }
+ 
+        session()->put('wishlist', $wishlist);
+        return redirect()->back()->with('success', 'Product add to wishlist successfully!');
+    }
+    
+    public function removewish(Request $request)
+    {
+        if($request->id) {
+            $wishlist = session()->get('wishlist');
+            if(isset($wishlist[$request->id])) {
+                unset($wishlist[$request->id]);
+                session()->put('wishlist', $wishlist);
+            }
+            // session()->flash('success', 'Product successfully removed!');
+            return redirect()->back()->with('success', 'Product successfully removed!');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    // update remove untuk cart
     public function update(Request $request)
     {
         if($request->id && $request->quantity){

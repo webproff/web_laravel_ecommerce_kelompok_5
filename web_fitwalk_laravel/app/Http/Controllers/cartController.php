@@ -31,6 +31,7 @@ class cartController extends Controller
             'title' => $poster->title,
             'price' => $poster->price,
             'quantity' => $quantity,
+
         ]);
 
         $cart = Auth::user()->cart;

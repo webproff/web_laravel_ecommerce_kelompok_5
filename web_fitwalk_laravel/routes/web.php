@@ -35,6 +35,7 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/', [postController::class, 'indexs']);
 Route::get('/archon', [postController::class, 'index']);
 route::get('archon/{poster:slug}', [postController::class, 'show']);
 
@@ -70,12 +71,18 @@ Route::post('/register', [registerController::class, 'store']);
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware('auth');
 
+// cart
 Route::get('cart/', [postController::class, 'cart'])->name('cart')->middleware('auth');
 Route::get('add-to-cart/{id}', [postController::class, 'addToCart'])->name('add_to_cart')->middleware('auth');
 Route::patch('update-cart', [postController::class, 'update'])->name('update_cart');
 Route::delete('remove-from-cart/{id}', [postController::class, 'remove'])->name('remove_from_cart');
 
-Route::post('/cart/add', [cartController::class, 'add'])->middleware('auth');
+// wishlist 
+Route::get('/wishlist', [postController::class, 'indexw'])->name('wishlist')->middleware('auth');
+Route::get('wish-list/{id}', [postController::class, 'addToWish'])->name('add_to_Wish')->middleware('auth');
+Route::patch('update-cart', [postController::class, 'update'])->name('update_cart');
+Route::delete('remove-from-wishlist/{id}', [postController::class, 'removewish'])->name('remove_from_wish');
+
 
 
 
@@ -125,44 +132,29 @@ Route::post('/cart/add', [cartController::class, 'add'])->middleware('auth');
 Route::get('/cart', function () {
     return view('cart', [
         'title' => 'cart',
-        'name' => 'welt yang',
-        'email' => 'antoluishendry@gmail.com',
-        'image' => 'img/jojo.jpg'
     ]);
 });
 
 Route::get('/wishlist', function () {
     return view('wishlist', [
-        'title' => 'ilovenavia',
-        'name' => 'welt yang',
-        'email' => 'antoluishendry@gmail.com',
-        'image' => 'img/jojo.jpg'
+        'title' => 'wishlist',
     ]);
 });
 
 Route::get('/setting', function () {
     return view('setting', [
         'title' => 'wishes',
-        'name' => 'welt yang',
-        'email' => 'antoluishendry@gmail.com',
-        'image' => 'img/jojo.jpg'
     ]);
 });
 
 Route::get('/profile', function () {
     return view('profile', [
         'title' => 'wishes',
-        'name' => 'welt yang',
-        'email' => 'antoluishendry@gmail.com',
-        'image' => 'img/jojo.jpg'
     ]);
 });
 
 Route::get('/notification', function () {
     return view('notification', [
         'title' => 'wishes',
-        'name' => 'welt yang',
-        'email' => 'antoluishendry@gmail.com',
-        'image' => 'img/jojo.jpg'
     ]);
 });
