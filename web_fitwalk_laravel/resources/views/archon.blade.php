@@ -36,6 +36,8 @@
                         rating: {{ $post->rating }} | sold: {{ $post->sold }}
                         <br>
                         <p class="btn-holder"><a href="{{ route('add_to_cart', $post->id) }}" class="btn btn-primary btn-block text-center" role="button">Add to cart</a> </p>
+
+                        <p class="btn-holder"><a href="{{ route('add_to_Wish', $post->id) }}" class="btn btn-primary btn-block text-center" role="button">Add to wishlist</a> </p>
                     </p>        
                     </small>
                     </div>
